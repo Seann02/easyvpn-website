@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      EasyVPN
+    </title>
+    <span id="circle" class="circle" style="left: 394px; top: 158px;"></span>
+    <script>
+    let hovered = false;
+let cursor = q.get('#cursor');
+let cursor2 = q.get('#cursorfollow');
+
+let hidden = false;
+
+let cx = 0;
+let cy = 0;
+
+let lastx = 0;
+let lasty = 0;
+
+q.forAll('a',s=>{
+  s.on('mouseover',e=>{hovered=e.target});
+  s.on('mouseout',e=>{hovered=false});
+});
+
+q.forAll('iframe',s=>{
+  s.on('mouseover',e=>{hidden=true;});
+  s.on('mouseout',e=>{hidden=false});
+});
+
+function moveC2() {
+  lastx += (cx - lastx) / 8;
+  lasty += (cy - lasty) / 8;
+  cursor2.style.left = lastx + 'px';
+  cursor2.style.top = lasty + 'px';
+}
+
+window.addEventListener('mousemove',e=>{
+  cx = e.clientX;
+  cy = e.clientY;
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  if (hovered!=false) {
+    cursor.classList.add('action');
+    cursor2.classList.add('action');
+  }
+  else {
+    cursor.classList.remove('action');
+    cursor2.classList.remove('action');
+  }
+  if (hidden) {
+    cursor.classList.add('hidden');
+    cursor2.classList.add('hidden');
+  }
+  else {
+    cursor.classList.remove('hidden');
+    cursor2.classList.remove('hidden');
+  }
+});
+
+window.addEventListener('mousedown',e=>{
+  cursor.classList.add('down');
+})
+
+window.addEventListener('mouseup',e=>{
+  cursor.classList.remove('down');
+})
+
+window.addEventListener("mousedown", e=>{
+  cursor2.classList.remove("canim");
+  void cursor2.offsetWidth;
+  cursor2.classList.add("canim");
+});
+
+setInterval(moveC2,15);
+     </script>
+    <style>
+      body,
+      html {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        cursor: none;
+        margin: 0;
+        background-color: #ffffff;
+      }
+
+      h1 {
+        font-family: monospace, arial, sans-serif;
+        text-align: center;
+        color: #4CAF50;
+      }
+
+      h2 {
+        font-family: monospace, arial, sans-serif;
+        text-align: center;
+        color: #000000;
+      }
+      h2-1 {
+        font-family: monospace, arial, sans-serif;
+
+        color: #ff9900;
+      }
+
+      h3 {
+        font-family: monospace, arial, sans-serif;
+        margin: 40px;
+        text-align: center;
+        color: #ffea00;
+      }
+
+      p {
+        font-family: monospace, arial, sans-serif;
+        color: #000000;
+        text-align: center;
+        margin: 40px;
+      }
+
+      div.gallery {
+        cursor: none;
+        margin: 5px;
+        border: 1px solid #ccc;
+        float: left;
+        width: 180px;
+      }
+
+      div.gallery:hover {
+        cursor: none;
+        border: 1px solid #777;
+      }
+
+      div.gallery img {
+        cursor: none;
+        width: 100%;
+        height: auto;
+      }
+
+      div.desc {
+        cursor: none;
+        padding: 15px;
+        text-align: center;
+      }
+
+      .cursor {
+        left: 0;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #f44336;
+        background-image: linear-gradient(to right, red , yellow);
+        position: absolute;
+        border-radius: 25px;
+      }
+
+      .cursor__follower {
+        transition: transform 0.4s;
+        width: 6px;
+        background-image: linear-gradient(to right, red , yellow);
+        height: 6px;
+      }
+    </style>
+    <body>
+      <h1>
+        EasyVPN, 'the best vpn!!'
+      </h1>
+      <h2>
+        Why you should buy EasyVPN.
+      </h2>
+      <h3>
+        EasyVPN is <a href="https://easyvpn.glitch.me/prices.html">cheap.</a>
+      </h3>
+
+      <p>
+        EasyVPN has strong DDOS Protection. Its easy to setup and connect. It is
+        compatible with<br />
+        Windows, MacOS, Linux, iOS, and Android OS. Your data is never logged,
+        <b>never</b>. You<br />
+        wont scarifice security for connection speed.
+      </p>
+      <h2>
+        Contact me on Discord to purchase: 1_2many#6447
+      </h2>
+      <br />
+      <br />
+      <h2-1>
+        Example Image:
+      </h2-1>
+      <br />
+      <div class="gallery">
+        <a
+          target="_blank"
+          href="https://cdn.glitch.com/f5eb5ab5-8e39-4781-a2ff-9a6796b8699b%2FScreenshot_1.png?v=1604119187026"
+        >
+          <img
+            src="https://cdn.glitch.com/f5eb5ab5-8e39-4781-a2ff-9a6796b8699b%2FScreenshot_1.png?v=1604119187026"
+            alt="Cinque Terre"
+            width="403"
+            height="518"
+          />
+        </a>
+        <div class="desc">The VPN Connected</div>
+      </div>
+    </body>
+  </head>
+</html>
